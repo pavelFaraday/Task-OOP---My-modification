@@ -1,19 +1,15 @@
-<?php include 'inc/header.php'; ?>
+<?php include 'inc/header.php'; 
 
-<?php 
   spl_autoload_register(function($class_name){   
     include "classes/".$class_name.".php";   
   });
-?>
-
-<section>
-<?php 
+   
       $user = new Product();     
       if (isset($_POST['create'])) { 
         $barcode = 'SKU-'.uniqid($_POST['barcode']); 
         $name = $_POST['name'];      
         $price  = $_POST['price'];    
-        $size  = $_POST['size'];    
+        $size  = $_POST['size'];
         $height  = $_POST['height'];    
         $width  = $_POST['width'];    
         $length  = $_POST['length'];    
@@ -29,15 +25,10 @@
         $user->setLength($length);    
         $user->setWeight($weight);    
         $user->setImage($image); 
-
-        if($user->insert()){
-          echo "Data Inserted Successfully.."; 
-        }
       }
-?>
 
-<!-- DELETE DATA -->
-<?php 
+
+    // DELETE DATA
     if(isset($_GET['action']) && $_GET['action']=='delete') {
       $id = (int)$_GET['id'];
       if ($user->delete($id)) {
@@ -46,38 +37,53 @@
     }
 ?>
 
-  <table class="tblone">
-    <tr>
-        <th>barcode</th>  
-        <th>Name</th>     
-        <th>price</th>    
-        <th>size</th>     
-        <th>height</th>   
-        <th>width</th>    
-        <th>length</th>   
-        <th>weight</th>   
-        <th>image</th>    
-    </tr>
-    <?php
-        $i = 0; 
-        foreach ($user->readAll() as $key => $value){
-        $i++;
-    ?>
-    <tr>
-        <td><?php echo $value['barcode'];?></td>  
-        <td><?php echo $value['name'];?></td>  
-        <td><?php echo $value['price'];?></td>  
-        <td><?php echo $value['size'];?></td>  
-        <td><?php echo $value['height'];?></td>  
-        <td><?php echo $value['width'];?></td>  
-        <td><?php echo $value['length'];?></td>  
-        <td><?php echo $value['weight'];?></td>  
-        <td><?php echo $value['image'];?></td>  
-        <td>
-         <?php echo "<a href='index.php?action=delete&id=".$value['id']."'>Delete</a>";?>
-        </td>
-    </tr>
-      <?php } ?>
-  </table>
+<div class="container">
+  <!-- Table Product -->
 
+  <?php if($user->insert()) : ?>
+      <div class="alert alert-success" role="alert">
+        <strong>Created</strong>
+      </div>
+  <?php endif ?>
+  <?php if (isset($_GET['status']) && $_GET['status'] == "fail_create") : ?>
+      <div class="alert alert-danger" role="alert">
+        <strong>Fail Create</strong>
+      </div>
+  <?php endif ?>
+
+<div class="card-body">
+  <div class="row">
+    <div class="col-md-12">
+      <h5 class="card-title float-left">All Products</h5>
+      <a href="create.php" class="btn btn-success float-right mb-3"> Add New</a>
+      <button type="button" class="btn btn-danger float-right mr-3" id="delete"  onclick="return confirm('Are you sure?')">Mass Delete</button>
+    </div>
+  </div>
+
+<div class="row">
+   <?php if ($user->readAll() > 0) : ?>
+    <?php foreach ($user->readAll() as $value) : ?>
+    <div class="col-md-3 ajax-del"> <!-- Delete div with AJAX--> 
+      <div class="card border-secondary mb-4">
+          <a href="#"><img src="<?= $value['image'] ?>" alt="<?= $value['name'] ?>" class="card-img-top img-fluid"></a>
+          <div class="card-body bg-light text-center">
+            <input type="checkbox"  class="float-left" id="<?php echo $value['id'] ?>" name="id[]"></<input>
+            <p class="card-text mt-3"><?=$value['barcode'] ?></p>
+            <h5 class="card-title text-danger font-weight-bold"><?= $value['name'] ?></h5>
+            <p class="card-text">$<?= number_format($value  ['price'], 2) ?></p>
+            <p class="card-text"><?=$value['weight'] ?></p>
+            <p class="card-text"><?=$value['size'] ?></p>
+            <p class="card-text mb-4"><?=$value['height'] ?> <?=$value ['width'] ?> <?=$value ['length'] ?> </p>
+          </div>
+      </div>
+    </div>
+   <?php endforeach ?>
+   <?php endif ?>
+   
+</div>
+</div>
+</div>
+<!-- End Product -->
+
+<br>
 <?php include 'inc/footer.php'; ?>

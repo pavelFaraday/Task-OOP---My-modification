@@ -1,18 +1,25 @@
-</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+          <span class="text-muted">&copy; Georgian Guy 2019 | devstudio.corp@gmail.com</span>
+        </div>
+    </footer>
+    <!-- End Footer -->
 
-  <footer class="footeroption">
-	  <section class="footerone">
-	  <p>Delowar Jahan Imran</p>
-	  <p>Oracle Certified Professional,</p>
-	  <p>Java SE 6 Programmer</p>
-	  
-	  </section>
-	  <section class="footerone">
-		  <p>FB Page: facebook.com/ProDelowar</p>
-		  <p>FB Group: facebook.com/groups/PBPTBD</p>
-		  <p>Web: www.trainingWithLiveProject.com</p>
-	  </section>
-  </footer>
+   <!-- scripts -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 
-</body>
+     <!-- prevent a resubmit on refresh -->
+     <script>
+        if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+     }
+     </script>
+
+  </body>
 </html>
