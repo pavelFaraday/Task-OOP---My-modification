@@ -1,17 +1,33 @@
 
 <form action="index.php" method="post">
  <table>
-    <tr>
-        <td>Name: </td>
-        <td><input type="text" name="name" placeholder='Your Name..' required="1"/></td>    
+   <tr>
+        <td><input type="hidden" name="barcode"/></td>    
     </tr>
     <tr>
-       <td>Department: </td>
-        <td><input type="text" name="dep" placeholder='Your Department..'  required="1"/></td>
+        <td><input type="text" name="name" placeholder='Product Name..' required="1"/></td>    
     </tr>
     <tr>
-       <td>Age: </td>
-       <td><input type="text" name="age" placeholder='Your Age..'  required="1"/></td>
+        <td><input type="number" name="price" placeholder='Price..'  required="1"/></td>  
+    </tr>
+    <tr>
+       <td><input type="text" name="size" placeholder='size'  required="1"/></td> 
+    </tr>
+
+    <tr>
+       <td><input type="text" name="height" placeholder='height'  required="1"/></td> 
+    </tr>
+    <tr>
+       <td><input type="text" name="width" placeholder='width'  required="1"/></td> 
+    </tr>
+    <tr>
+       <td><input type="text" name="length" placeholder='length'  required="1"/></td> 
+    </tr>
+    <tr>
+       <td><input type="text" name="weight" placeholder='weight'  required="1"/></td> 
+    </tr>
+    <tr>
+       <td><input type="text" name="image" placeholder='image'  required="1"/></td> 
     </tr>
     <tr>
       <td></td>

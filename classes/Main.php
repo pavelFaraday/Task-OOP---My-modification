@@ -3,7 +3,6 @@
 
     abstract class Main {
         protected $table;
-
         abstract public function insert();
 
         // READ DATA
