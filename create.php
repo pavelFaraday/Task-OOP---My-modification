@@ -1,7 +1,9 @@
+<?php include("inc/option.php") ?>
 <?php include("inc/header.php") ?>
 
 
 <div class="container">
+<a href="index.php" class="btn btn-light mb-3"><< Go Back</a>
 
        <!-- Create Form --> 
        <div class="card border-danger">
@@ -77,7 +79,6 @@
 </div> <!-- END container -->
 
 <?php include("inc/footer.php") ?>
-
 
 
 

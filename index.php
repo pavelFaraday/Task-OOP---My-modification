@@ -63,27 +63,25 @@
 <div class="row">
    <?php if ($user->readAll() > 0) : ?>
     <?php foreach ($user->readAll() as $value) : ?>
-    <div class="col-md-3 ajax-del"> <!-- Delete div with AJAX--> 
+    <div class="col-md-3 ajax-del"> <!--Delete div with AJAX--> 
       <div class="card border-secondary mb-4">
-          <a href="#"><img src="<?= $value['image'] ?>" alt="<?= $value['name'] ?>" class="card-img-top img-fluid"></a>
+          <a href="#"><img src="<?= $value['image'] ?>" alt="<?= $value['name']?>" class="card-img-top img-fluid"></a>
           <div class="card-body bg-light text-center">
-            <input type="checkbox"  class="float-left" id="<?php echo $value['id'] ?>" name="id[]"></<input>
+            <input type="checkbox"  class="float-left" id="<?php echo $value['id']?>" name="id[]"></<input>
             <p class="card-text mt-3"><?=$value['barcode'] ?></p>
-            <h5 class="card-title text-danger font-weight-bold"><?= $value['name'] ?></h5>
-            <p class="card-text">$<?= number_format($value  ['price'], 2) ?></p>
-            <p class="card-text"><?=$value['weight'] ?></p>
-            <p class="card-text"><?=$value['size'] ?></p>
-            <p class="card-text mb-4"><?=$value['height'] ?> <?=$value ['width'] ?> <?=$value ['length'] ?> </p>
+            <h5 class="card-title text-danger font-weight-bold"><?= $value['name']?></h5>
+            <p class="card-text">$<?= number_format($value['price'], 2)?></p>
+            <p class="card-text"><?=$value['weight']?></p>
+            <p class="card-text"><?=$value['size']?></p>
+            <p class="card-text mb-4"><?=$value['height']?> <?=$value['width'] ?><?=$value['length']?></p>
           </div>
+        </div>
       </div>
-    </div>
    <?php endforeach ?>
    <?php endif ?>
-   
-</div>
-</div>
+  </div>
+ </div>
 </div>
 <!-- End Product -->
-
 <br>
 <?php include 'inc/footer.php'; ?>
