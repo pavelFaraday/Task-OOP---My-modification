@@ -29,12 +29,12 @@
 
 
     // DELETE DATA
-    if(isset($_GET['action']) && $_GET['action']=='delete') {
-      $id = (int)$_GET['id'];
-      if ($user->delete($id)) {
-        echo "Data Deleted Successfully.."; 
-      }
-    }
+    // if(isset($_GET['action']) && $_GET['action']=='delete') {
+    //   $id = (int)$_GET['id'];
+    //   if ($user->delete($id)) {
+    //     echo "Data Deleted Successfully.."; 
+    //   }
+    // }
 ?>
 
 <div class="container">

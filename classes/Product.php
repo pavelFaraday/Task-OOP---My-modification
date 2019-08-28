@@ -1,60 +1,60 @@
 <?php
     include "classes/Main.php";
 
-    class Product extends Main {    // DONE  
-        protected $table = 'products'; // DONE
-        private $barcode; //  DONE
-        private $name; //  DONE
-        private $price; //  DONE
-        private $size; //  DONE
-        private $height; //  DONE
-        private $width; //  DONE
-        private $length; //  DONE
-        private $weight; //  DONE
-        private $image; //  DONE
+    class Product extends Main {      
+        protected $table = 'products'; 
+        private $barcode; 
+        private $name; 
+        private $price; 
+        private $size; 
+        private $height; 
+        private $width; 
+        private $length; 
+        private $weight; 
+        private $image; 
         
         // SET Parametres
-        public function setBarcode($barcode){ // DONE
+        public function setBarcode($barcode){ 
             $this->barcode=$barcode;
         }
-        public function setName($name){ // DONE
+        public function setName($name){ 
             $this->name=$name;
         }
-        public function setPrice($price){ // DONE
+        public function setPrice($price){ 
             $this->price=$price;
         }
-        public function setSize($size){ // DONE
+        public function setSize($size){ 
             $this->size=$size;
         }
-        public function setHeight($height){ // DONE
+        public function setHeight($height){ 
             $this->height=$height;
         }
-        public function setWidth($width){ // DONE
+        public function setWidth($width){ 
             $this->width=$width;
         }
-        public function setLength($length){ // DONE
+        public function setLength($length){ 
             $this->length=$length;
         }
-        public function setWeight($weight){ // DONE
+        public function setWeight($weight){ 
             $this->weight=$weight;
         }
-        public function setImage($image){ // DONE
+        public function setImage($image){ 
             $this->image=$image;
         }
 
         // CREATE DATA
         public function insert(){
-            $sql = "INSERT INTO $this->table(barcode, name, price, size, height, width, length, weight, image) VALUES(:barcode, :name, :price, :size, :height, :width, :length, :weight, :image)"; // DONE
+            $sql = "INSERT INTO $this->table(barcode, name, price, size, height, width, length, weight, image) VALUES(:barcode, :name, :price, :size, :height, :width, :length, :weight, :image)";
             $stmt = DB::prepare($sql);
-            $stmt->bindParam(':barcode', $this->barcode); // DONE
-            $stmt->bindParam(':name', $this->name); // DONE
-            $stmt->bindParam(':price', $this->price); // DONE
-            $stmt->bindParam(':size', $this->size); // DONE
-            $stmt->bindParam(':height', $this->height); // DONE
-            $stmt->bindParam(':width', $this->width); // DONE
-            $stmt->bindParam(':length', $this->length); // DONE
-            $stmt->bindParam(':weight', $this->weight); // DONE
-            $stmt->bindParam(':image', $this->image); // DONE
+            $stmt->bindParam(':barcode', $this->barcode);
+            $stmt->bindParam(':name', $this->name);
+            $stmt->bindParam(':price', $this->price);
+            $stmt->bindParam(':size', $this->size);
+            $stmt->bindParam(':height', $this->height);
+            $stmt->bindParam(':width', $this->width);
+            $stmt->bindParam(':length', $this->length);
+            $stmt->bindParam(':weight', $this->weight);
+            $stmt->bindParam(':image', $this->image);
 
 
             return $stmt->execute();

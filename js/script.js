@@ -1,5 +1,4 @@
-
-    // for Mass-Delete. JS
+     // for Mass-Delete. JS
     $(document).ready(function(){
         $('#checkAll').click(function(){
          if(this.checked){
@@ -14,7 +13,7 @@
     });
 
 
-    // // for Mass Delete. AJAX - Choose div for delete
+    // for Mass Delete. AJAX - Choose div for delete
     $('#delete').click(function(){
        var dataArr  = new Array();
        if($('input:checkbox:checked').length > 0){
@@ -46,8 +45,6 @@
       }
     });
 
-
-    
     // for SPECIAL ATTRIBUTE with helpfull info. AJAX
     function fetch_select (val){
          $.ajax({
