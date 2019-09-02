@@ -3,18 +3,26 @@
   spl_autoload_register(function($class_name){   
     include "classes/".$class_name.".php";   
   });
-   
       $user = new Product();     
       if (isset($_POST['create'])) { 
         $barcode = 'SKU-'.uniqid($_POST['barcode']); 
         $name = $_POST['name'];      
-        $price  = $_POST['price'];    
+        $price  = $_POST['price'];
+        // For fixing undefined index error
+        $size = '';  
+        $height = ''; 
+        $width = '';
+        $length = '';
+        $weight = '';
+      // For fixing undefined index error
+      if(isset($_GET["size" && "height" && "width" && "length" && "weight"])) {
         $size  = $_POST['size'];
-        $height  = $_POST['height'];    
-        $width  = $_POST['width'];    
-        $length  = $_POST['length'];    
-        $weight  = $_POST['weight'];    
-        $image  = $_POST['image'];    
+        $height  = $_POST['height'];
+        $width  = $_POST['width'];
+        $length  = $_POST['length'];
+        $weight  = $_POST['weight'];
+      }
+        $image  = $_POST['image']; 
 
         $user->setBarcode($barcode);    
         $user->setName($name);    
