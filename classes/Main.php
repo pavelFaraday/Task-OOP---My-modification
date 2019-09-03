@@ -13,12 +13,12 @@
             return $stmt->fetchAll();
         } 
  
-        // DELETE DATA
-        public function delete($id){
-            $sql = "DELETE FROM $this->table WHERE id=:id";
-            $stmt = DB::prepare($sql);
-            $stmt->bindParam(':id', $id[]);
-            return $stmt->execute();
-        }
+       // DELETE DATA
+       public function delete($id){
+        $sql = "DELETE FROM $this->table WHERE id=:id";
+        $stmt = DB::prepare($sql);
+        $stmt->bindParam(':id', $id[]);
+        return $stmt->execute();
+    }
     }
 ?>
