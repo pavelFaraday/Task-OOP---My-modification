@@ -35,14 +35,13 @@
         $user->setImage($image); 
       }
 
-
     // DELETE DATA
-    // if(isset($_GET['action']) && $_GET['action']=='delete') {
-    //   $id = (int)$_GET['id'];
-    //   if ($user->delete($id)) {
-    //     echo "Data Deleted Successfully.."; 
-    //   }
-    // }
+    if(isset($_POST['delete'])) {
+      $id = $_POST['id'];
+      if ($user->delete($id)) {
+        echo "Data Deleted Successfully.."; 
+      }
+    }
 ?>
 
 <div class="container">
@@ -59,15 +58,18 @@
       </div>
   <?php endif ?>
 
+
+
 <div class="card-body">
   <div class="row">
     <div class="col-md-12">
       <h5 class="card-title float-left">All Products</h5>
       <a href="create.php" class="btn btn-success float-right mb-3"> Add New</a>
-      <button type="button" class="btn btn-danger float-right mr-3" id="delete"  onclick="return confirm('Are you sure?')">Mass Delete</button>
+      
     </div>
   </div>
 
+<form method="POST">
 <div class="row">
    <?php if ($user->readAll() > 0) : ?>
     <?php foreach ($user->readAll() as $value) : ?>
@@ -88,7 +90,10 @@
    <?php endforeach ?>
    <?php endif ?>
   </div>
- </div>
+  <input type="submit" class="btn btn-danger float-right mr-3" id="delete" name="delete" onclick="return confirm('Are you sure?')"></input>
+</form>
+
+</div>
 </div>
 <!-- End Product -->
 <br>
