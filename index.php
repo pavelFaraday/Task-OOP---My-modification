@@ -37,8 +37,8 @@
 
     // DELETE DATA
     if(isset($_POST['delete'])) {
-      $id = $_POST['id'];
-      if ($user->delete($id)){
+      $ids = $_POST['id'];
+      if ($user->delete($ids)){
         echo "Data Deleted Successfully.. </br>"; 
       }
     }
@@ -79,7 +79,7 @@
       <div class="card border-secondary mb-4">
           <a href="#"><img src="<?= $value['image'] ?>" alt="<?= $value['name']?>" class="card-img-top img-fluid"></a>
           <div class="card-body bg-light text-center">
-            <input type="checkbox"  class="float-left" value="<?php echo $value['id']?>" name="id"></<input>
+            <input type="checkbox"  class="float-left" value="<?php echo $value['id']?>" name="id[]"></<input>
             <p class="card-text mt-3"><?=$value['barcode'] ?></p>
             <h5 class="card-title text-danger font-weight-bold"><?= $value['name']?></h5>
             <p class="card-text">$<?= number_format($value['price'], 2)?></p>

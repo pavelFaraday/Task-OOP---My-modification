@@ -14,11 +14,12 @@
         } 
  
        // DELETE DATA
-       public function delete($id){
-        $sql = "DELETE FROM $this->table WHERE id IN (:id)";
+       public function delete(array $ids) {
+        $placeholders = trim(str_repeat('?,', count($ids)), ',');
+        $sql = "DELETE FROM $this->table WHERE id IN ($placeholders)";
         $stmt = DB::prepare($sql);
-        $stmt->bindParam(':id', $id);
-        return $stmt->execute();
+        return $stmt->execute($ids);
     }
+    
     }
 ?>
