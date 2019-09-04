@@ -15,9 +15,9 @@
  
        // DELETE DATA
        public function delete($id){
-        $sql = "DELETE FROM $this->table WHERE id=:id";
+        $sql = "DELETE FROM $this->table WHERE id IN (:id)";
         $stmt = DB::prepare($sql);
-        $stmt->bindParam(':id', $id[]);
+        $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
     }
