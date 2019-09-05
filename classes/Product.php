@@ -55,8 +55,6 @@
             $stmt->bindParam(':length', $this->length);
             $stmt->bindParam(':weight', $this->weight);
             $stmt->bindParam(':image', $this->image);
-
-
             return $stmt->execute();
         }
     }

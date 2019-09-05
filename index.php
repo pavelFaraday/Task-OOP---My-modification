@@ -5,16 +5,16 @@
   });
       $user = new Product();     
       if (isset($_POST['create'])) { 
-        $barcode='SKU-'.uniqid($_POST['barcode']); 
+        $barcode='SKU'.uniqid($_POST['barcode']); 
         $name=$_POST['name'];      
         $price =$_POST['price'];
-        $size=isset($_POST['size']) ? $_POST['size'] : '';
+        // For fixing undefined index error
+        $size=isset($_POST['size']) ? $_POST['size'] : ''; 
         $height=isset($_POST['height']) ? $_POST['height'] : '';
         $width=isset($_POST['width']) ? $_POST['width'] : '';
         $length=isset($_POST['length']) ? $_POST['length'] : '';
         $weight=isset($_POST['weight']) ? $_POST['weight'] : '';
         $image=$_POST['image']; 
-
         $user->setBarcode($barcode);    
         $user->setName($name);    
         $user->setPrice($price);    
@@ -28,9 +28,9 @@
 
     // DELETE DATA
     if(isset($_POST['delete'])) {
-      $ids = $_POST['id'];
-      if ($user->delete($ids)){
-        echo "<div class='alert alert-info col-md-11 text-danger ml-5 mt-3 role='alert'><strong> Product Deleted Successfully  </strong></div>"; 
+      $id = $_POST['id'];
+      if ($user->delete($id)){
+        echo "<div class='alert alert-info col-md-4 text-danger ml-5 mt-3' role='alert'><strong> Product Deleted Successfully </strong></div>"; 
       }
     }
 ?>
@@ -38,7 +38,7 @@
 <div class="container">
   <!-- Table Product -->
   <?php if($user->insert()) : ?>
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success col-md-4" role="alert">
       <strong>New Product Created</strong>
     </div>
   <?php endif ?>
@@ -62,15 +62,15 @@
     <?php foreach ($user->readAll() as $value) : ?>
     <div class="col-md-3">
       <div class="card border-secondary mb-4">
-          <a href="#"><img src="<?= $value['image'] ?>" alt="<?= $value['name']?>" class="card-img-top img-fluid"></a>
+          <a href="#"><img src="<?=$value['image']?>" alt="<?= $value['name']?>" class="card-img-top img-fluid"></a>
           <div class="card-body bg-light text-center">
             <input type="checkbox"  class="float-left" value="<?php echo $value['id']?>" name="id[]"></<input>
-            <p class="card-text mt-3"><?=$value['barcode'] ?></p>
-            <h5 class="card-title text-danger font-weight-bold"><?= $value['name']?></h5>
+            <p class="card-text mt-3"><?=$value['barcode']?></p>
+            <h5 class="card-title text-danger font-weight-bold"><?=$value['name']?></h5>
             <p class="card-text">$<?= number_format($value['price'], 2)?></p>
             <p class="card-text"><?=$value['weight']?></p>
             <p class="card-text"><?=$value['size']?></p>
-            <p class="card-text mb-4"><?=$value['height']?> <?=$value['width'] ?><?=$value['length']?></p>
+            <p class="card-text mb-4"><?=$value['height']?> <?=$value['width']?><?=$value['length']?></p>
           </div>
         </div>
       </div>
