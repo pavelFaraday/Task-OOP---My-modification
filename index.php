@@ -8,6 +8,8 @@
         $barcode = 'SKU-'.uniqid($_POST['barcode']); 
         $name = $_POST['name'];      
         $price  = $_POST['price'];
+        
+        
         // For fixing undefined index error
         $size = '';  
         $height = ''; 
@@ -22,6 +24,8 @@
         $length  = $_POST['length'];
         $weight  = $_POST['weight'];
       }
+
+
         $image  = $_POST['image']; 
 
         $user->setBarcode($barcode);    
@@ -39,16 +43,13 @@
     if(isset($_POST['delete'])) {
       $ids = $_POST['id'];
       if ($user->delete($ids)){
-        echo "Data Deleted Successfully.. </br>"; 
+        echo "<div class='alert alert-info col-md-11 text-danger ml-5 mt-2 role='alert'> <strong> Data Deleted Successfully..  </strong></div>"; 
       }
     }
-
-    
 ?>
 
 <div class="container">
   <!-- Table Product -->
-
   <?php if($user->insert()) : ?>
       <div class="alert alert-success" role="alert">
         <strong>Created</strong>
@@ -60,22 +61,19 @@
       </div>
   <?php endif ?>
 
-
-
 <div class="card-body">
+<form method="POST"> 
   <div class="row">
     <div class="col-md-12">
       <h5 class="card-title float-left">All Products</h5>
       <a href="create.php" class="btn btn-success float-right mb-3"> Add New</a>
-      
-    </div>
+      <input type="submit" value="Mass Delete" class="btn btn-danger float-right mr-3" id="delete" name="delete" onclick="return confirm('Are you sure?')"></input>
   </div>
-
-<form method="POST"> 
+  </div>
 <div class="row">
    <?php if ($user->readAll() > 0) : ?>
     <?php foreach ($user->readAll() as $value) : ?>
-    <div class="col-md-3 ajax-del"> <!--Delete div with AJAX--> 
+    <div class="col-md-3">
       <div class="card border-secondary mb-4">
           <a href="#"><img src="<?= $value['image'] ?>" alt="<?= $value['name']?>" class="card-img-top img-fluid"></a>
           <div class="card-body bg-light text-center">
@@ -92,9 +90,7 @@
    <?php endforeach ?>
    <?php endif ?>
   </div>
-  <input type="submit" class="btn btn-danger float-right mr-3" id="delete" name="delete" onclick="return confirm('Are you sure?')"></input>
 </form>
-
 </div>
 </div>
 <!-- End Product -->
