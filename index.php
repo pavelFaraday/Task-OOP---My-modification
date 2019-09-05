@@ -5,28 +5,15 @@
   });
       $user = new Product();     
       if (isset($_POST['create'])) { 
-        $barcode = 'SKU-'.uniqid($_POST['barcode']); 
-        $name = $_POST['name'];      
-        $price  = $_POST['price'];
-        
-        
-        // For fixing undefined index error
-        $size = '';  
-        $height = ''; 
-        $width = '';
-        $length = '';
-        $weight = '';
-      // For fixing undefined index error
-      if(isset($_GET["size" && "height" && "width" && "length" && "weight"])) {
-        $size  = $_POST['size'];
-        $height  = $_POST['height'];
-        $width  = $_POST['width'];
-        $length  = $_POST['length'];
-        $weight  = $_POST['weight'];
-      }
-
-
-        $image  = $_POST['image']; 
+        $barcode='SKU-'.uniqid($_POST['barcode']); 
+        $name=$_POST['name'];      
+        $price =$_POST['price'];
+        $size=isset($_POST['size']) ? $_POST['size'] : '';
+        $height=isset($_POST['height']) ? $_POST['height'] : '';
+        $width=isset($_POST['width']) ? $_POST['width'] : '';
+        $length=isset($_POST['length']) ? $_POST['length'] : '';
+        $weight=isset($_POST['weight']) ? $_POST['weight'] : '';
+        $image=$_POST['image']; 
 
         $user->setBarcode($barcode);    
         $user->setName($name);    
@@ -43,7 +30,7 @@
     if(isset($_POST['delete'])) {
       $ids = $_POST['id'];
       if ($user->delete($ids)){
-        echo "<div class='alert alert-info col-md-11 text-danger ml-5 mt-2 role='alert'> <strong> Data Deleted Successfully..  </strong></div>"; 
+        echo "<div class='alert alert-info col-md-11 text-danger ml-5 mt-3 role='alert'><strong> Product Deleted Successfully  </strong></div>"; 
       }
     }
 ?>
@@ -51,14 +38,14 @@
 <div class="container">
   <!-- Table Product -->
   <?php if($user->insert()) : ?>
-      <div class="alert alert-success" role="alert">
-        <strong>Created</strong>
-      </div>
+    <div class="alert alert-success" role="alert">
+      <strong>New Product Created</strong>
+    </div>
   <?php endif ?>
   <?php if (isset($_GET['status']) && $_GET['status'] == "fail_create") : ?>
-      <div class="alert alert-danger" role="alert">
-        <strong>Fail Create</strong>
-      </div>
+    <div class="alert alert-danger" role="alert">
+      <strong>Fail Create</strong>
+    </div>
   <?php endif ?>
 
 <div class="card-body">
