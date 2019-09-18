@@ -1,20 +1,23 @@
-<?php include 'inc/header.php'; 
-  // PHP AutoLoader
-  spl_autoload_register(function($class_name){   
+<?php 
+include 'inc/header.php'; 
+
+// PHP AutoLoader
+spl_autoload_register(function($class_name) {   
     include "classes/".$class_name.".php";   
-  });
-  $user = new Product();     
-  if (isset($_POST['create'])) { 
-    $barcode='SKU'.uniqid($_POST['barcode']); 
-    $name=$_POST['name'];      
-    $price =$_POST['price'];
-    // fixing undefined index error
-    $size=isset($_POST['size']) ? $_POST['size'] : ''; 
-    $height=isset($_POST['height']) ? $_POST['height'] : '';
-    $width=isset($_POST['width']) ? $_POST['width'] : '';
-    $length=isset($_POST['length']) ? $_POST['length'] : '';
-    $weight=isset($_POST['weight']) ? $_POST['weight'] : '';
-    $image=$_POST['image']; 
+});
+
+$user = new Product();     
+if (isset($_POST['create'])) { 
+    $barcode = 'SKU'.uniqid($_POST['barcode']); 
+    $name = $_POST['name'];      
+    $price = $_POST['price'];
+    // fixing Undefined Index error
+    $size = isset($_POST['size']) ? $_POST['size'] : ''; 
+    $height = isset($_POST['height']) ? $_POST['height'] : '';
+    $width = isset($_POST['width']) ? $_POST['width'] : '';
+    $length = isset($_POST['length']) ? $_POST['length'] : '';
+    $weight = isset($_POST['weight']) ? $_POST['weight'] : '';
+    $image = $_POST['image']; 
     $user->setBarcode($barcode);    
     $user->setName($name);    
     $user->setPrice($price);    
@@ -24,18 +27,19 @@
     $user->setLength($length);    
     $user->setWeight($weight);    
     $user->setImage($image); 
-  }
-  // DELETE DATA
-  if(isset($_POST['delete'])){
-  $id = $_POST['id'];
-  if ($user->delete($id)){
-    echo "<div class='alert alert-info col-md-4 text-danger ml-5 mt-3' role='alert'><strong> Product DeletedSuccessfully </strong></div>"; 
+}
+
+// Delede Data
+if (isset($_POST['delete'])) {
+    $id = $_POST['id'];
+    if ($user->delete($id)) {
+        echo "<div class='alert alert-info col-md-4 text-danger ml-5 mt-3' role='alert'><strong> Product Deleted Successfully </strong></div>"; 
     }
-  }
+}
 ?>
 
 <div class="container">
-  <?php if($user->insert()) : ?>
+  <?php if ($user->insert()) : ?>
     <div class="alert alert-success col-md-4" role="alert">
       <strong>New Product Created</strong>
     </div>

@@ -1,8 +1,9 @@
 <?php 
-if(isset($_POST['option'])){
-   $val=$_POST['option'];
-   echo $val; exit;
+if (isset($_POST['option'])) {
+    $val=$_POST['option'];
+    echo $val; exit;
 }
+
 include("inc/header.php");
 ?>
 
