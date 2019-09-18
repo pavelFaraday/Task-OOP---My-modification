@@ -1,10 +1,10 @@
 <?php
 include "classes/DB.php";
 
-abstract class Main 
+abstract class Main
 {
     protected $table;
-    
+
     abstract public function insert();
 
     // Read Data
@@ -25,4 +25,5 @@ abstract class Main
         return $stmt->execute($id);
     }
 }
+
 ?>

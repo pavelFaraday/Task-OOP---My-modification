@@ -1,10 +1,10 @@
 <?php
 include "classes/Main.php";
 
-class Product extends Main 
-{      
+class Product extends Main
+{
     protected $table = 'products';
-    
+
     private $barcode;
     private $name;
     private $price;
@@ -14,7 +14,7 @@ class Product extends Main
     private $length;
     private $weight;
     private $image;
-        
+
     // SET Parametres
     public function setBarcode($barcode)
     {
@@ -79,4 +79,5 @@ class Product extends Main
         return $stmt->execute();
     }
 }
+
 ?>
