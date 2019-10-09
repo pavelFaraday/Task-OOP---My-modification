@@ -1,19 +1,13 @@
 <?php
 include_once "classes/DB.php";
 
-abstract class Main
+class Main
 {
-    protected $table = 'products';
+    public $table = 'products';
     public $barcode;
     public $name;
     public $price;
     public $image;
-
-    protected $weight;
-    protected $size;
-    protected $height;
-    protected $width;
-    protected $length;
 
     // SET Parametres
     public function setBarcode($barcode)
@@ -35,12 +29,6 @@ abstract class Main
     {
         $this->image = $image;
     }
-
-    abstract function setWeight($weight);
-    abstract function setSize($size);
-    abstract function setHeight($height);
-    abstract function setWidth($width);
-    abstract function setLength($length);
 
     // Read Data
     public function readAll()
