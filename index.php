@@ -7,7 +7,7 @@ spl_autoload_register(function($class_name) {
 });
 
 
-$user = new Types(); 
+$user = new Types();
 
 if (isset($_POST['create'])) { 
     $barcode = 'SKU'.uniqid($_POST['barcode']); 
@@ -22,7 +22,7 @@ if (isset($_POST['create'])) {
     $image = $_POST['image']; 
 
     $user->setBarcode($barcode);    
-    $user->setName($name);    
+    $user->setName($name);
     $user->setPrice($price); 
     $user->setImage($image); 
 
