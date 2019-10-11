@@ -1,5 +1,4 @@
 <?php 
-include_once 'classes/Main.php';
 
 interface Weight
 {
@@ -11,16 +10,15 @@ interface Size
     public function setSize($size);
 }
 
-interface Fdim extends Weight,Size
+interface Fdim
 {
     public function setHeight($height);
     public function setWidth($width);
     public function setLength($length);
 }
 
-class Furniture extends Main implements fdim
+class Types extends Main implements Weight,Size,Fdim
 {
-
     public function setWeight($weight)
     {
         $this->weight = $weight;
