@@ -3,15 +3,12 @@ include_once "classes/DB.php";
 
 class Main
 {
-    use Book;
-    use Disc;
-    use Furniture;
-
     public $table = 'products';
     public $barcode;
     public $name;
     public $price;
     public $image;
+    
     protected $height;
     protected $width;
     protected $length;

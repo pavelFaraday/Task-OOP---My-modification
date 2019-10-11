@@ -7,7 +7,7 @@ spl_autoload_register(function($class_name) {
 });
 
 
-$user = new Main();
+$user = new Furniture(); 
 
 if (isset($_POST['create'])) { 
     $barcode = 'SKU'.uniqid($_POST['barcode']); 
@@ -76,7 +76,7 @@ if (isset($_POST['delete'])) {
             <p class="card-text">$<?= number_format($value['price'], 2)?></p>
             <p class="card-text"><?=htmlspecialchars($value['weight'])?></p>
             <p class="card-text"><?=htmlspecialchars($value['size'])?></p>
-            <p class="card-text mb-4"><?=htmlspecialchars($value['height'])?> <?=htmlspecialchars($value['width'])?><?=htmlspecialchars($value['length'])?></p>
+            <p class="card-text mb-4"><?=htmlspecialchars($value['height'])?><?=htmlspecialchars($value['width'])?><?=htmlspecialchars($value['length'])?></p>
           </div>
         </div>
       </div>

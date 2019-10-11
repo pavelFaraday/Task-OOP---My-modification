@@ -1,11 +1,7 @@
 <?php 
+include_once 'classes/Main.php';
 
-trait Book
-{
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
-    }
-}
+
+
 
 ?>
