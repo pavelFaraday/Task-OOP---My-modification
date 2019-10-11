@@ -1,9 +1,11 @@
-<?php 
+<?php
 
-interface Disc
+trait Disc
 {
-   public function setSize($size);
+    public function setSize($size)
+    {
+        $this->size = $size;
+    }  
 }
-
 
 ?>

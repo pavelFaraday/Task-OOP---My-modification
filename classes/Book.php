@@ -1,10 +1,11 @@
 <?php 
 
-interface Book 
+trait Book
 {
-    public function setWeight($weight);
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+    }
 }
-
-
 
 ?>

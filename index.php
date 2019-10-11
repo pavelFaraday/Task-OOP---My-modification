@@ -7,7 +7,7 @@ spl_autoload_register(function($class_name) {
 });
 
 
-$user = new Types();
+$user = new Main();
 
 if (isset($_POST['create'])) { 
     $barcode = 'SKU'.uniqid($_POST['barcode']); 
@@ -20,15 +20,17 @@ if (isset($_POST['create'])) {
     $length = isset($_POST['length']) ? $_POST['length'] : '';
     $weight = isset($_POST['weight']) ? $_POST['weight'] : '';
     $image = $_POST['image']; 
+
     $user->setBarcode($barcode);    
     $user->setName($name);    
-    $user->setPrice($price);    
+    $user->setPrice($price); 
+    $user->setImage($image); 
+
+    $user->setWeight($weight);     
     $user->setSize($size);    
     $user->setHeight($height);    
     $user->setWidth($width);    
     $user->setLength($length);    
-    $user->setWeight($weight);    
-    $user->setImage($image); 
 }
 
 // Delede Data
