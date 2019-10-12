@@ -1,7 +1,7 @@
 <?php
 include_once "classes/DB.php";
 
-class Main
+abstract class Main
 {
     public $table = 'products';
     public $barcode;
@@ -13,7 +13,11 @@ class Main
     protected $width;
     protected $length;
     protected $size;
-    protected $weight;    
+    protected $weight; 
+
+    public abstract function setHeight($height);
+    public abstract function setWidth($width);
+    public abstract function setLength($length);
 
     // SET Parametres
     public function setBarcode($barcode)

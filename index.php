@@ -7,7 +7,7 @@ spl_autoload_register(function($class_name) {
 });
 
 
-$user = new Types();
+$user = new Furniture();
 
 if (isset($_POST['create'])) { 
     $barcode = 'SKU'.uniqid($_POST['barcode']); 
