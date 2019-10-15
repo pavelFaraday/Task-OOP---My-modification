@@ -1,43 +1,38 @@
 <?php 
-include_once 'classes/Main.php'; 
+include_once 'classes/Product.php'; 
 
-interface Size
+// interfaces of each product type
+interface HavingFur_dims
 {
-    public function setSize($size);
+    public function setHeight($height);
+    public function setWidth($width);
+    public function setLength($length);
 }
 
-interface Weight
+// traits of each product type
+trait WithFur_dims
 {
-    public function setWeight($weight);
-}
-
-class Furniture extends Main implements Size,Weight
-{
+    // setters
     public function setHeight($height)
     {
-        $this->height = $height;
+        return $this->height = $height;
     }
 
     public function setWidth($width)
     {
-        $this->width = $width;
+        return $this->width = $width;
     }
 
     public function setLength($length)
     {
-        $this->length = $length;
+        return $this->length = $length;
     }
-
-    public function setSize($size)
-    {
-        $this->size = $size;
-    }
-
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
-    }  
 }
 
+// Child classes
+class Furniture extends Product implements HavingFur_dims
+{
+   use WithFur_dims;
+}
 
 ?>

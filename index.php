@@ -6,8 +6,28 @@ spl_autoload_register(function($class_name) {
     include "classes/".$class_name.".php";   
 });
 
+function show($user) {
+    if($user instanceof HavingWeight)
+    {
+      $user->setWeight($weight);
+    } elseif ($user instanceof HavingSize)
+    {
+      $user->setSize($size);
+    } elseif($user instanceof HavingFur_dims)
+    {
+      $user->setHeight($height);
+      $user->setWidth($width);
+      $user->setLength($length);
+    } else 
+    { 
+      die("This is not a Product..");
+    }
+}
 
-$user = new Furniture();
+show(new Book);
+show(new Disc);
+show(new Furniture);
+
 
 if (isset($_POST['create'])) { 
     $barcode = 'SKU'.uniqid($_POST['barcode']); 
@@ -21,12 +41,12 @@ if (isset($_POST['create'])) {
     $weight = isset($_POST['weight']) ? $_POST['weight'] : '';
     $image = $_POST['image']; 
 
-    $user->setBarcode($barcode);    
+    $user->setBarcode($barcode);
     $user->setName($name);
     $user->setPrice($price); 
     $user->setImage($image); 
 
-    $user->setWeight($weight);     
+    $user->setWeight($weight);    
     $user->setSize($size);    
     $user->setHeight($height);    
     $user->setWidth($width);    
