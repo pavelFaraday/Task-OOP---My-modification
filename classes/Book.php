@@ -1,12 +1,12 @@
 <?php 
 
-// interfaces of each product type
+// interfaces
 interface HavingWeight
 {
     public function setWeight($weight);
 }
 
-// traits of each product type
+// traits
 trait WithWeight
 {
     // setters
@@ -21,6 +21,5 @@ class Book extends Product implements HavingWeight
 {
    use WithWeight;
 }
-
 
 ?>

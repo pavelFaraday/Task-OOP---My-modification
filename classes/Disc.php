@@ -12,8 +12,8 @@ trait WithSize
     // setters    
     public function setSize($size)
     {
-        return $this->size = $size;
-    } 
+        $this->size = $size;
+    }
 }
 
 // Child classes
