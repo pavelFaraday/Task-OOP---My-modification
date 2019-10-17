@@ -1,19 +1,22 @@
 <?php
 include_once "classes/DB.php";
 
-abstract class Product
+class Main implements HavingWeight,HavingSize,HavingFur_dims
 {
+    use Book;
+    use Disc;
+    use Furniture;
+
     public $table = 'products';
     public $barcode;
     public $name;
     public $price;
     public $image;
-    
-    public $height;
-    public $width;
-    public $length;
-    public $size;
-    public $weight; 
+    protected $height;
+    protected $width;
+    protected $length;
+    protected $size;
+    protected $weight;    
 
     // SET Parametres
     public function setBarcode($barcode)

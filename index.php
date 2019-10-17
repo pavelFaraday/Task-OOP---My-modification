@@ -6,12 +6,8 @@ spl_autoload_register(function($class_name) {
     include "classes/".$class_name.".php";   
 });
 
-    
-$user = new Book();
-$Size = new Disc();
-$Fur = new Furniture();
 
-
+$user = new Main();
 
 if (isset($_POST['create'])) { 
     $barcode = 'SKU'.uniqid($_POST['barcode']); 
@@ -25,19 +21,19 @@ if (isset($_POST['create'])) {
     $weight = isset($_POST['weight']) ? $_POST['weight'] : '';
     $image = $_POST['image']; 
 
-    $user->setBarcode($barcode);
-    $user->setName($name);
+    $user->setBarcode($barcode);    
+    $user->setName($name);    
     $user->setPrice($price); 
     $user->setImage($image); 
 
-    $user->setWeight($weight);    
-    $Size->setSize($size);    
-    $Fur->setHeight($height);    
-    $Fur->setWidth($width);    
-    $Fur->setLength($length);    
+    $user->setWeight($weight);     
+    $user->setSize($size);    
+    $user->setHeight($height);    
+    $user->setWidth($width);    
+    $user->setLength($length);    
 }
 
-// Delee Data
+// Delede Data
 if (isset($_POST['delete'])) {
     $id = $_POST['id'];
     if ($user->delete($id)) {
@@ -80,7 +76,7 @@ if (isset($_POST['delete'])) {
             <p class="card-text">$<?= number_format($value['price'], 2)?></p>
             <p class="card-text"><?=htmlspecialchars($value['weight'])?></p>
             <p class="card-text"><?=htmlspecialchars($value['size'])?></p>
-            <p class="card-text mb-4"><?=htmlspecialchars($value['height'])?><?=htmlspecialchars($value['width'])?><?=htmlspecialchars($value['length'])?></p>
+            <p class="card-text mb-4"><?=htmlspecialchars($value['height'])?> <?=htmlspecialchars($value['width'])?><?=htmlspecialchars($value['length'])?></p>
           </div>
         </div>
       </div>

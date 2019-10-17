@@ -1,26 +1,16 @@
-<?php 
+<?php
 
-// interfaces of each product type
 interface HavingSize
 {
     public function setSize($size);
 }
 
-// traits of each product type
-trait WithSize
+trait Disc
 {
-    // setters    
     public function setSize($size)
     {
         $this->size = $size;
-    }
+    }  
 }
-
-// Child classes
-class Disc extends Product implements HavingSize
-{
-   use WithSize;
-}
-
 
 ?>
